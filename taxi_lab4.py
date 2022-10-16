@@ -3,33 +3,33 @@ sum = 0
 distance_list = []
 price_list = []
 for i in range(employees_num):
-    distance = int(input('Введите расстояние до дома {0}-го сотрудника в км: '.format(i+1)))
+    distance = int(input('Введите расстояние до дома {0}-го сотрудника в км: '.format(i+1))) 
     distance_list.append(distance)
 for i in range(employees_num):
     price = int(input('Введите тариф {0}-го такси за 1 км:  '.format(i+1)))
     price_list.append(price)
-c_distance_list = distance_list[:]
+c_distance_list = distance_list[:] #Создаём копии списков
 c_price_list = price_list[:]
 index_list_d = []
 index_list_p = []
-
+#Заполняем списки индексами в порядке возр/убыв значений переменных
 max_distance = 0
 for i in range(employees_num):
-    index = c_distance_list.index(max(c_distance_list))
-    index_list_d.append(index)
+    index = c_distance_list.index(max(c_distance_list)) 
+    index_list_d.append(index)   #Создаём списки, где будут хранится индексы наших значений
     c_distance_list[index] = 0
 for i in range(employees_num):
     index = c_price_list.index(min(c_price_list))
     index_list_p.append(index)
     c_price_list[index] = 10**10
-
+#Для i-го клиента в паре списков с индексам (расстояние по убыванию/цена по возрастанию) ищем нужный индекс такси 
 print('Такси для клиента 1, 2, 3, ...:')
 for i in range(employees_num):
     taxi_num = index_list_p[index_list_d.index(i)]
     print(taxi_num+1)
 for i in range(employees_num):
     sum += distance_list[index_list_d[i]]*price_list[index_list_p[i]]
-print('Необходимо всего заплатить:')
+print('Необходимо всего заплатить:') #Дополняем программу кодом вывода кол-ва денег словами
 W1a = ["один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"]
 W1b = ["одна", "две", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"]
 W2 = ["одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"]
